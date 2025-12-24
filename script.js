@@ -141,7 +141,7 @@ function restartGame() {
 
   intervelId = setInterval(() => {
     render();
-  }, 200);
+  }, 400);
 }
 
 document.addEventListener("keydown", (event) => {
