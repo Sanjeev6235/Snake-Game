@@ -155,3 +155,45 @@ document.addEventListener("keydown", (event) => {
     direction = "right";
   }
 });
+
+
+/////mobile ////
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+document.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  touchEndY = e.changedTouches[0].clientY;
+
+  handleSwipe();
+});
+
+function handleSwipe() {
+  let diffX = touchEndX - touchStartX;
+  let diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    // LEFT or RIGHT
+    if (diffX > 0) {
+      direction = "right";
+    } else {
+      direction = "left";
+    }
+  } else {
+    // UP or DOWN
+    if (diffY > 0) {
+      direction = "down";
+    } else {
+      direction = "up";
+    }
+  }
+}
+
+
